@@ -14,6 +14,7 @@ Page({
    */
   onLoad: function (options) {
     var postId = options.id;
+    this.data.currentPostId = postId;
     var postData = postsData.postList[postId];
     // this.data.postData = postData;
     this.setData({
@@ -21,14 +22,39 @@ Page({
     })
     // console.log(postData)
     // wx.setStorageSync(key, data)
-    wx.setStorage({
-      key: '',
-      data: '',
-    })
+    // wx.setStorage({
+    //   key: '',
+    //   data: '',
+    // })
+
+    var postsCollected = wx.getStorageSync('posts_collected')
+    if(postsCollected){
+      var collected = postsCollected[postId]
+      this.setData({
+        collected:collected
+      })
+    }else{
+      var postsCollected = {};
+        postsCollected[postId] = false;
+      wx.setStorageSync('posts_collected', postsCollected)
+    }
   },
 
-  OnCollectTap:function(){
-    var game = wx.getStorageSync(key)
+  onCollectionTap:function(event){
+    console.log(1111);
+    var postsCollected = wx.getStorageSync('posts_collected');
+    
+    var postCollected = postsCollected[this.data.currentPostId];
+    // 状态值切换
+    postCollected = !postCollected;
+    console.log(postCollected)
+    postsCollected[this.data.currentPostId] = postCollected;
+    // 更新文章是否缓存值
+    wx.setStorageSync('posts_collected', postsCollected)
+    // 更新数据绑定
+    this.setData({
+      collected:postCollected
+    })
   },
 
   /**

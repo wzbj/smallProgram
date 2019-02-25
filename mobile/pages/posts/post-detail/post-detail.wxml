@@ -11,7 +11,8 @@
   <text class='title'>{{postData.title}}</text>
   <view class='tool'>
     <view class='circle-img'>
-      <image class='co' catchtap='OnCollectTap' src='/images/icon/collect.png'></image>
+      <image wx:if="{{collected}}" catchtap='onCollectionTap' src='/images/icon/collect1.png'></image>
+      <image wx:else  catchtap='onCollectionTap' src='/images/icon/collect.png'></image>
       <image class='share-img' src='/images/icon/share.png'></image>
     </view>
     <view class='horizon'></view>
