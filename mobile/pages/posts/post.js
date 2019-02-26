@@ -97,5 +97,21 @@ Page({
     wx.navigateTo({
       url: 'post-detail/post-detail?id='+postId,
     })
+  },
+  onSwiperItemTap:function(event){
+    var postId = event.currentTarget.dataset.postid;
+    // console.log(postId);
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id=' + postId,
+    })
+  },
+  onSwiperTap:function(event){
+    // target 和currentTarget  
+    // target是值当前点击的组件image，currentTarget指的是时间捕获的组件swiper
+    var postId = event.target.dataset.postid;
+    console.log(event.target.dataset.postid)
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id=' + postId,
+    })
   }
 })

@@ -1,12 +1,30 @@
 {
   "pages": [
     "pages/welcome/welcome",
-    "pages/posts/post-detail/post-detail",
     "pages/posts/post",
+    "pages/movies/movies",
+    "pages/posts/post-detail/post-detail",
     "pages/slide/slide"
     
   ],
   "window": {
     "navigationBarBackgroundColor": "#405f80"
+  },
+  "tabBar": {
+    "borderStyle":"white",
+    "list": [
+      {
+        "pagePath": "pages/posts/post",
+        "text": "文章",
+        "iconPath": "/images/icon/wen.png",
+        "selectedIconPath": "images/icon/wenSelect.png"
+      },
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "电影",
+        "iconPath": "images/icon/play.png",
+        "selectedIconPath": "/images/icon/playing.png"
+      }
+    ]
   }
 }
